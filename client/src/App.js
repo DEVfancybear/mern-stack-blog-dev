@@ -6,11 +6,13 @@ import {
 import './App.css';
 import About from "./components/About";
 import Login from "./components/Login";
+import Home from "./components/Home";
 const App = () => {
     return (
         <Fragment className="App">
             <Switch>
-                <Route exact path="/" component={Login}/>
+                <Route exact path="/" component={Home}/>
+                <Route path="/login" component={Login}/>
                 <Route path="/about" component={About}/>
             </Switch>
         </Fragment>
