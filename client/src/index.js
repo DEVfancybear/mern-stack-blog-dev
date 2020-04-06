@@ -9,7 +9,7 @@ import thunk from "redux-thunk";
 import {composeWithDevTools} from 'redux-devtools-extension';
 import {Provider} from "react-redux";
 import {BrowserRouter} from "react-router-dom";
-
+import "materialize-css/dist/css/materialize.css";
 const store = createStore(
     rootReducers, composeWithDevTools(applyMiddleware(thunk))
 )

@@ -4,14 +4,13 @@ import {
     Route,
 } from "react-router-dom";
 import './App.css';
-import Home from "./components/Home";
 import About from "./components/About";
-
+import Login from "./components/Login";
 const App = () => {
     return (
         <Fragment className="App">
             <Switch>
-                <Route exact path="/" component={Home}/>
+                <Route exact path="/" component={Login}/>
                 <Route path="/about" component={About}/>
             </Switch>
         </Fragment>
