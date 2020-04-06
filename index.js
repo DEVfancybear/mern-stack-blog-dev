@@ -4,16 +4,17 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const {User} = require('./models/user');
+const config = require('./config/key')
 const port = 5000;
 // connect database mongoose
-mongoose.connect('mongodb+srv://duong113:123@cluster0-wn0ns.mongodb.net/test?retryWrites=true&w=majority',
+mongoose.connect(config.mongoURL,
     {useNewUrlParser: true}).then(() => console.log('Connected success Mongoose !')).catch(err => {
     console.log(err);
 });
 const app = express();
 //to not get any deprecation warning or error
 //support parsing of application/x-www-form-urlencoded post data
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
 //to get json data
 // support parsing of application/json type post data
 app.use(bodyParser.json());
