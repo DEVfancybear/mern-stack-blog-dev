@@ -23,3 +23,14 @@ export const registerUser = dataSubmit => {
         })
     }
 }
+
+export const logoutUser = () => {
+    return async dispatch => {
+        const req  = await axios.get(API+ "users/logout");
+        const data = await req.data
+        dispatch({
+            type: types.LOGOUT_USER,
+            payload: data
+        })
+    }
+}

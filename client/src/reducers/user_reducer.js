@@ -14,6 +14,10 @@ export default (state = initialState, action) => {
             return {
                 ...state, loginSuccess: action.payload
             }
+        case types.LOGOUT_USER:
+            return {
+                ...state, loginSuccess: action.payload
+            }
         default:
             return state
     }

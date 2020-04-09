@@ -1,9 +1,26 @@
 import React from "react";
-const Home = () => {
+import {connect} from "react-redux";
+import {logoutUser} from "../actions/index";
+
+const Home = ({logoutUser, history}) => {
+    const logOutUserLogin = () => {
+        logoutUser();
+        history.push("/login");
+    }
     return (
         <div>
             Home
+            <button onClick={logOutUserLogin}>
+                Logout
+            </button>
         </div>
     )
 }
-export default Home;
+const mapDispatchToProps = (dispatch, props) => {
+    return {
+        logoutUser: () => {
+            dispatch(logoutUser())
+        }
+    }
+}
+export default connect(null, mapDispatchToProps)(Home);
