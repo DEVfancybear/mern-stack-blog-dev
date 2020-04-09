@@ -10,6 +10,10 @@ export default (state = initialState, action) => {
             return {
                 ...state, loginSuccess: action.payload
             }
+        case types.REGISTER_USER:
+            return {
+                ...state, loginSuccess: action.payload
+            }
         default:
             return state
     }

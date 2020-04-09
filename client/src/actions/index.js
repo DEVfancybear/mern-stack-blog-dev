@@ -12,3 +12,14 @@ export const loginUser = dataSubmit => {
         })
     }
 }
+
+export const registerUser = dataSubmit => {
+    return async dispatch => {
+        const req = await axios.post(API + "users/register" ,dataSubmit);
+        const data = await req.data;
+        dispatch({
+            type: types.REGISTER_USER,
+            payload: data
+        })
+    }
+}
