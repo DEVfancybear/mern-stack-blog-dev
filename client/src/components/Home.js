@@ -1,20 +1,27 @@
 import React from "react";
 import {connect} from "react-redux";
 import {logoutUser} from "../actions/index";
+import {withRouter} from 'react-router';
+import {compose} from "redux";
 
-const Home = ({logoutUser, history}) => {
+const Home = ({logoutUser, history, user_reducer: {name}}) => {
     const logOutUserLogin = () => {
         logoutUser();
         history.push("/login");
     }
     return (
         <div>
-            Home
+            {name}
             <button onClick={logOutUserLogin}>
                 Logout
             </button>
         </div>
     )
+}
+const mapStateToProps = state => {
+    return {
+        user_reducer: state.user_reducer
+    }
 }
 const mapDispatchToProps = (dispatch, props) => {
     return {
@@ -23,4 +30,5 @@ const mapDispatchToProps = (dispatch, props) => {
         }
     }
 }
-export default connect(null, mapDispatchToProps)(Home);
+const HomeRouter = compose(withRouter, connect(mapStateToProps, mapDispatchToProps))
+export default HomeRouter(Home);

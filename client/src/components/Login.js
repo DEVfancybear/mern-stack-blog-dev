@@ -1,8 +1,10 @@
 import React, {useState} from "react";
 import {connect} from "react-redux";
 import {loginUser} from "../actions/index";
+import { withRouter } from 'react-router';
+import {compose} from "redux";
 
-const Login = ({user_reducer: {loginSuccess}, loginUser, history}) => {
+const Login = ({user_reducer: {user}, loginUser, history}) => {
     const [state, setState] = useState({
         email: "",
         password: "",
@@ -45,7 +47,7 @@ const Login = ({user_reducer: {loginSuccess}, loginUser, history}) => {
     // const email = state.email;
     const isFormValid = ({email, password}) => email && password;
     // const displayErrors = errors => errors.map((error, index) => <p key={index}>{error}</p>
-    if (loginSuccess === false) {
+    if (user === false) {
         return "Failed"
     }
     return (
@@ -106,4 +108,5 @@ const mapDispatchToProps = (dispatch, props) => {
         }
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+const LoginRouter = compose(withRouter, connect(mapStateToProps, mapDispatchToProps));
+export default LoginRouter(Login);

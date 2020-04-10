@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 import {connect} from "react-redux";
 import {registerUser} from "../actions/index";
+import { withRouter } from 'react-router';
+import {compose} from "redux";
 
 const Register = ({registerUser, history}) => {
     const [state, setState] = useState({
@@ -129,4 +131,6 @@ const mapDispatchToProps = (dispatch, props) => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(Register);
+const RegisterRouter = compose(withRouter,connect(null, mapDispatchToProps) )
+
+export default RegisterRouter(Register);

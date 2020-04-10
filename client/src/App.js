@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React, {Suspense} from 'react';
 import {
     Switch,
     Route,
@@ -8,16 +8,17 @@ import About from "./components/About";
 import Login from "./components/Login";
 import Home from "./components/Home";
 import Register from "./components/Register";
+import Auth from "./hoc/auth";
 const App = () => {
     return (
-        <Fragment className="App">
+        <Suspense>
             <Switch>
-                <Route exact path="/" component={Home}/>
-                <Route path="/login" component={Login}/>
-                <Route path="/about" component={About}/>
-                <Route path="/register" component={Register}/>
+                <Route exact path="/" component={Auth(Home,null)}/>
+                <Route exact path="/login" component={Auth(Login,false)}/>
+                <Route exact path="/about" component={Auth(About,false)}/>
+                <Route exact path="/register" component={Auth(Register,false)}/>
             </Switch>
-        </Fragment>
+        </Suspense>
     );
 }
 
