@@ -1,9 +1,13 @@
 const express = require("express");
 const connectDB = require("./config/db");
+const cors = require('cors')
+
 const app = express();
 //Connect database
 connectDB();
 app.get("/", (req, res) => res.send("Welcome to database"));
+// Unlock all cors
+app.use(cors());
 // Init Middleware
 app.use(express.json({ extended: false }));
 //Define Routes
