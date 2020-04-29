@@ -20,20 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e5ff63f1-9d78-4bdf-8d32-ab790a45a52f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/config/README.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/db.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/default.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/README.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/api/auth.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/api/posts.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/api/profile.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/api/users.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/client/yarn.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/dev.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/key.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/prod.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/middlewares/auth.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/user.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/users.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +81,7 @@
       <workItem from="1586687509076" duration="21000" />
       <workItem from="1586687847291" duration="214000" />
       <workItem from="1588041449362" duration="2000" />
-      <workItem from="1588126032143" duration="1361000" />
+      <workItem from="1588126032143" duration="2302000" />
     </task>
     <servers />
   </component>
@@ -107,6 +100,10 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
+    <state x="705" y="351" width="569" height="411" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1588127582428">
+      <screen x="70" y="27" width="1850" height="1053" />
+    </state>
+    <state x="705" y="351" width="569" height="411" key="#com.intellij.fileTypes.FileTypeChooser/70.27.1850.1053@70.27.1850.1053" timestamp="1588127582428" />
     <state x="671" y="230" width="526" height="511" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1588126341435">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
