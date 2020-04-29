@@ -1,1 +1,1 @@
-Middalware
+Middleware
