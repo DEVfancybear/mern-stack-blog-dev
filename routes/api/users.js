@@ -4,6 +4,8 @@ const {check, validationResult} = require('express-validator');
 const gravatar = require("gravatar");
 const bcrypt = require("bcryptjs");
 const User = require("../../models/User");
+const jwt = require("jsonwebtoken");
+const config = require("config");
 
 
 //@route GET api/users
@@ -26,12 +28,12 @@ router.post("/",
     ], async (req, res) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            return res.status(400).json({ errors: errors.array() });
+            return res.status(400).json({errors: errors.array()});
         }
-        const { name, email, password } = req.body;
+        const {name, email, password} = req.body;
         try {
             // See if user exits
-            let user = User.findOne({
+            let user = await User.findOne({
                 email
             })
             if (user) {
@@ -54,9 +56,22 @@ router.post("/",
             user.password = await bcrypt.hash(password, salt);
             await user.save();
             // Return Jsonwebtoken
-
-            console.log(req.body);
-            res.send("User router");
+            const payload = {
+                user: {
+                    id: user.id
+                }
+            };
+            jwt.sign(
+                payload,
+                config.get("jwtSecret"),
+                {expiresIn: 360000},
+                (err, token) => {
+                    if (err) throw err;
+                    res.json({token});
+                }
+            );
+            // console.log(req.body);
+            // res.send("User router");
         } catch (e) {
             console.log(e.message);
             res.status(500).send('Server error');
