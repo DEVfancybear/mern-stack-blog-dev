@@ -1,15 +1,16 @@
 const express = require("express");
 const connectDB = require("./config/db");
 const cors = require('cors')
-
+const bodyParser = require('body-parser');
 const app = express();
 //Connect database
 connectDB();
 app.get("/", (req, res) => res.send("Welcome to database"));
 // Unlock all cors
 app.use(cors());
-// Init Middleware
-app.use(express.json({ extended: false }));
+// Body parser middleware
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 //Define Routes
 app.use("/api/users", require("./routes/api/users"));
 app.use("/api/auth", require("./routes/api/auth"));

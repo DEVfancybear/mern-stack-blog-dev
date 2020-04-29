@@ -61,17 +61,18 @@ router.post("/", [auth, [
     if (instagram) profileFields.social.instagram = instagram;
     if (linkedin) profileFields.social.linkedin = linkedin;
     try {
-        let profile = await Profile.findOne({
-            user: req.user.id
-        });
+        let profile = await Profile.findOne({user: req.user.id});
         if (profile) {
             // Update profile
-            profile = await Profile.findOneAndUpdate({user: req.user.id}, {$set: profileFields}, {new: true});
+            profile = await Profile.findOneAndUpdate({user: req.user.id}, {$set: profileFields}, {
+                new: true,
+                upsert: true
+            });
             return res.json(profile);
         }
         // Create profile
         profile = new Profile(profileFields);
-        await Profile.save();
+        await profile.save();
         await res.json(profile);
     } catch (e) {
         console.log(e.message);
@@ -101,19 +102,24 @@ router.get("/", async (req, res) => {
 //@desc Get profile by user ID
 //@access Public
 
-router.get("/user/:user_id", async (req, res) => {
+router.get('/user/:user_id', async (req, res) => {
     try {
-        const profile = await Profile.findOne({user: req.params.user_id}).populate('user', ['name', 'avatar']);
-        if (!profile) return res.status(400).json({msg: 'Profile not found'});
+        const profile = await Profile.findOne({
+            user: req.params.user_id
+        }).populate('user', ['name', 'avatar']);
+
+        if (!profile) return res.status(400).json({ msg: 'Profile not found' });
+
         await res.json(profile);
-    } catch (e) {
-        console.log(e.message);
-        if (e.kind === 'ObjectID') {
-            return res.status(400).json({msg: 'Profile not found'});
+    } catch (err) {
+        console.error(err.message);
+        if (err.kind == 'ObjectId') {
+            return res.status(400).json({ msg: 'Profile not found' });
         }
-        res.status(500).send("Server Error")
+        res.status(500).send('Server Error');
     }
-})
+});
+
 
 
 //@route DELETE api/profile
