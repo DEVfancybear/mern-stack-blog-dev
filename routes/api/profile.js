@@ -65,8 +65,7 @@ router.post("/", [auth, [
         if (profile) {
             // Update profile
             profile = await Profile.findOneAndUpdate({user: req.user.id}, {$set: profileFields}, {
-                new: true,
-                upsert: true
+                new: true
             });
             return res.json(profile);
         }
@@ -104,16 +103,14 @@ router.get("/", async (req, res) => {
 
 router.get('/user/:user_id', async (req, res) => {
     try {
-        const profile = await Profile.findOne({
-            user: req.params.user_id
-        }).populate('user', ['name', 'avatar']);
+        const profile = await Profile.findOne({user: req.params.user_id}).populate('user', ['name', 'avatar']);
 
         if (!profile) return res.status(400).json({ msg: 'Profile not found' });
 
         await res.json(profile);
     } catch (err) {
         console.error(err.message);
-        if (err.kind == 'ObjectId') {
+        if (err.kind === 'ObjectId') {
             return res.status(400).json({ msg: 'Profile not found' });
         }
         res.status(500).send('Server Error');
