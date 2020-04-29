@@ -20,7 +20,7 @@ router.get("/me", auth, async (req, res) => {
         if (!profile) {
             return res.status(400).json({msg: "There is no profile for this user"})
         }
-        res.json(profile);
+        await res.json(profile);
     } catch (e) {
         console.log(e.message);
         res.status(500).send("Server Error");
@@ -72,7 +72,7 @@ router.post("/", [auth, [
         // Create profile
         profile = new Profile(profileFields);
         await Profile.save();
-        res.json(profile);
+        await res.json(profile);
     } catch (e) {
         console.log(e.message);
         res.status(500).send("Server Error")
@@ -89,7 +89,7 @@ router.post("/", [auth, [
 router.get("/", async (req, res) => {
     try {
         const profiles = await Profile.find().populate('user', ['name', 'avatar']);
-        res.json(profiles);
+        await res.json(profiles);
     } catch (e) {
         console.log(e.message);
         res.status(500).send("Server Error")
@@ -105,7 +105,7 @@ router.get("/user/:user_id", async (req, res) => {
     try {
         const profile = await Profile.findOne({user: req.params.user_id}).populate('user', ['name', 'avatar']);
         if (!profile) return res.status(400).json({msg: 'Profile not found'});
-        res.json(profile);
+        await res.json(profile);
     } catch (e) {
         console.log(e.message);
         if (e.kind === 'ObjectID') {
@@ -126,7 +126,7 @@ router.delete("/", auth, async (req, res) => {
         await Profile.findOneAndRemove({user: req.user.id});
         // Remove user
         await User.findOneAndRemove({_id: req.user.id});
-        res.json({
+        await res.json({
             msg: "User deleted"
         });
     } catch (e) {
@@ -157,7 +157,7 @@ router.put("/experience", [auth, [
         const profile = await Profile.findOne({user: req.user.id});
         profile.experience.unshift(newExp);
         profile.save();
-        res.json(profile);
+        await res.json(profile);
     } catch (e) {
         console.log(e.message);
         res.status(500).send("Server Error")
@@ -174,7 +174,7 @@ router.delete("/experience/:exp_id", auth, async (req, res) => {
         const removeIndex = profile.experience.map(item => item.id).indexOf(req.params.exp_id);
         profile.experience.splice(removeIndex, 1);
         await profile.save();
-        res.json(profile);
+        await res.json(profile);
     } catch (e) {
         console.log(e.message);
         res.status(500).send("Server Error")
@@ -204,7 +204,7 @@ router.put("/education", [auth, [
         const profile = await Profile.findOne({user: req.user.id});
         profile.education.unshift(newEdu);
         profile.save();
-        res.json(profile);
+        await res.json(profile);
     } catch (e) {
         console.log(e.message);
         res.status(500).send("Server Error")
@@ -222,7 +222,7 @@ router.delete("/education/:edu_id", auth, async (req, res) => {
         const removeIndex = profile.education.map(item => item.id).indexOf(req.params.edu_id);
         profile.education.splice(removeIndex, 1);
         await profile.save();
-        res.json(profile);
+        await res.json(profile);
     } catch (e) {
         console.log(e.message);
         res.status(500).send("Server Error")
