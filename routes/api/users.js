@@ -18,7 +18,7 @@ router.get("/", (req, res) => res.send("Router users"));
 //@desc Test route
 //@access Public
 router.post("/",
-    // check các schema của models User
+    // check validate các schema của models User
     [
         check('name', 'Name is required').not().isEmpty(),
         // username must be an email
