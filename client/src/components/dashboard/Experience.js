@@ -2,7 +2,9 @@ import React, {Fragment} from "react";
 import {connect} from "react-redux";
 import Moment from 'react-moment';
 import moment from 'moment';
-const Experience = ({experience}) => {
+import {deleteExperience} from "../../actions/index"
+
+const Experience = ({experience, deleteExperience}) => {
     const experiences = experience.map(exp => (
         <tr key={exp._id}>
             <td>{exp.company}</td>
@@ -17,7 +19,7 @@ const Experience = ({experience}) => {
             </td>
             <td>
                 <button
-                    // onClick={() => deleteExperience(exp._id)}
+                    onClick={() => deleteExperience(exp._id)}
                     className="btn btn-danger"
                 >
                     Delete
@@ -42,4 +44,12 @@ const Experience = ({experience}) => {
         </Fragment>
     )
 }
-export default connect(null, null)(Experience);
+
+const mapDispatchToProps = (dispatch, props) => {
+    return {
+        deleteExperience: id => {
+            dispatch(deleteExperience(id))
+        }
+    }
+}
+export default connect(null, mapDispatchToProps)(Experience);
