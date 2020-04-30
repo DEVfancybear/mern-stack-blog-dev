@@ -8,6 +8,7 @@ import Register from "./components/auth/Register";
 import Alert from "./components/layout/Alert";
 import {loadUser} from './actions/index';
 import setAuthToken from './utils/setAuthToken';
+import Dashboard from "./components/dashboard/Dashboard";
 import {connect} from "react-redux";
 const App = ({loadUser}) => {
     useEffect(() => {
@@ -24,6 +25,7 @@ const App = ({loadUser}) => {
                     <Switch>
                         <Route exact={true} path="/register" component={Register}/>
                         <Route exact={true} path="/login" component={Login}/>
+                        <Route exact={true} path="/dashboard" component={Dashboard}/>
                     </Switch>
                 </section>
             </Fragment>
