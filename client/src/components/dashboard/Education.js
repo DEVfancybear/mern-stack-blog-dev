@@ -2,8 +2,9 @@ import React, {Fragment} from 'react';
 import Moment from 'react-moment';
 import moment from 'moment';
 import {connect} from 'react-redux';
+import {deleteEducation} from "../../actions/index";
 
-const Education = ({education}) => {
+const Education = ({education, deleteEducation}) => {
     const educations = education.map(edu => (
         <tr key={edu._id}>
             <td>{edu.school}</td>
@@ -18,6 +19,7 @@ const Education = ({education}) => {
             </td>
             <td>
                 <button
+                    onClick={() => deleteEducation(edu._id)}
                     className="btn btn-danger"
                 >
                     Delete
@@ -43,9 +45,15 @@ const Education = ({education}) => {
         </Fragment>
     );
 };
-
+const mapDispatchToProps = (dispatch, props) => {
+    return {
+        deleteEducation: id => {
+            dispatch(deleteEducation(id))
+        }
+    }
+}
 
 export default connect(
     null,
-    null
+    mapDispatchToProps
 )(Education);
