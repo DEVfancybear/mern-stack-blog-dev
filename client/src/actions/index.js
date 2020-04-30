@@ -152,7 +152,44 @@ export const createProfile = (
 
         dispatch({
             type: types.PROFILE_ERROR,
-            payload: { msg: err.response.statusText, status: err.response.status }
+            payload: {msg: err.response.statusText, status: err.response.status}
         });
     }
 };
+
+// Add Experiences
+export const addExperiences = (formData, history) => {
+    return async dispatch => {
+        try {
+            const config = {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            };
+
+            const res = await axios.put('/api/profile/experience', formData, config);
+
+            const data = await res.data
+
+            dispatch({
+                type: types.UPDATE_PROFILE,
+                payload: data
+            });
+
+            dispatch(setAlert('Experience Added', 'success'));
+            history.push('/dashboard');
+
+        } catch (err) {
+            const errors = err.response.data.errors;
+
+            if (errors) {
+                errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+            }
+
+            dispatch({
+                type: types.PROFILE_ERROR,
+                payload: {msg: err.response.statusText, status: err.response.status}
+            });
+        }
+    }
+}
