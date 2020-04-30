@@ -39,6 +39,19 @@ export default (state = initialState, action) => {
                 repos: [],
                 loading: false
             }
+
+        case types.GET_REPOS:
+            return {
+                ...state,
+                repos: payload,
+                loading: false
+            }
+        case types.NO_REPOS:
+            return {
+                ...state,
+                repos: [],
+                loading: false
+            }
         default:
             return state;
     }
