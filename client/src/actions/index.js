@@ -115,3 +115,35 @@ export const getCurrentProfile = () => {
         }
     }
 }
+
+// Create profile
+export const createProfile = (formData, history, edit = false) => {
+    return async dispatch => {
+        try {
+
+            const config = {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+            const res = await axios.post("/api/profile", formData,config);
+            const data = await res.data;
+            dispatch({
+                type: types.GET_PROFILE,
+                payload: data
+            });
+            dispatch(setAlert(edit ? 'Profile Updated': 'Profile Created'));
+            if(!edit) {
+                history.push("/dashboard");
+            }
+        } catch (e) {
+            const errors = e.response.data.errors;
+            if (errors) {
+                errors.forEach(err => dispatch(setAlert(err.msg, 'danger')))
+            }
+            dispatch({
+                type: types.PROFILE_ERROR
+            })
+        }
+    }
+}

@@ -19,7 +19,7 @@ const initialState = {
 };
 
 const ProfileForm = ({
-                         profile: { profile, loading },
+                         profileReducers: { profile, loading },
                          createProfile,
                          getCurrentProfile,
                          history
@@ -242,10 +242,11 @@ const ProfileForm = ({
 };
 
 
-const mapStateToProps = (state) => ({
-    profile: state.profile
-});
-
+const mapStateToProps = (state) => {
+    return {
+        profileReducers: state.profileReducers
+    }
+}
 export default connect(mapStateToProps, { createProfile, getCurrentProfile })(
     withRouter(ProfileForm)
 );
