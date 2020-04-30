@@ -20,8 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e5ff63f1-9d78-4bdf-8d32-ab790a45a52f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/client/src/components/auth/Login.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/auth/Register.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api/profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +85,9 @@
       <workItem from="1588143992595" duration="8401000" />
       <workItem from="1588152569734" duration="616000" />
       <workItem from="1588153936465" duration="6373000" />
-      <workItem from="1588167413762" duration="3732000" />
+      <workItem from="1588167413762" duration="4079000" />
+      <workItem from="1588176492066" duration="503000" />
+      <workItem from="1588207553219" duration="307000" />
     </task>
     <servers />
   </component>
@@ -107,11 +111,11 @@
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
     <state x="705" y="351" width="569" height="411" key="#com.intellij.fileTypes.FileTypeChooser/70.27.1850.1053@70.27.1850.1053" timestamp="1588127582428" />
-    <state x="671" y="230" width="526" height="511" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1588126341435">
+    <state x="671" y="230" width="526" height="511" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1588171398968">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1586185735518" />
-    <state x="671" y="230" width="526" height="511" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/70.27.1850.1053@70.27.1850.1053" timestamp="1588126341435" />
+    <state x="671" y="230" width="526" height="511" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/70.27.1850.1053@70.27.1850.1053" timestamp="1588171398968" />
     <state x="686" y="102" width="618" height="903" key="find.popup" timestamp="1588127064904">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
