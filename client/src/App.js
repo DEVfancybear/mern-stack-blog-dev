@@ -15,6 +15,8 @@ import CreateProfile from "./components/profile_forms/CreateProfile";
 import EditProfile from "./components/profile_forms/EditProfile";
 import AddEducation from "./components/profile_forms/AddEducation";
 import AddExperience from "./components/profile_forms/AddExperience";
+import Profiles from "./components/profiles/Profiles";
+
 const App = ({loadUser}) => {
     useEffect(() => {
         setAuthToken(localStorage.token);
@@ -30,6 +32,7 @@ const App = ({loadUser}) => {
                     <Switch>
                         <Route exact={true} path="/register" component={Register}/>
                         <Route exact={true} path="/login" component={Login}/>
+                        <Route exact={true} path="/profiles" component={Profiles}/>
                         <PrivateRoute exact={true} path="/dashboard" component={Dashboard}/>
                         <PrivateRoute exact={true} path="/create-profile" component={CreateProfile}/>
                         <PrivateRoute exact={true} path="/edit-profile" component={EditProfile}/>
@@ -48,4 +51,4 @@ const mapDispatchToProps = (dispatch, props) => {
         }
     }
 }
-export default connect(null,mapDispatchToProps)(App);
+export default connect(null, mapDispatchToProps)(App);
