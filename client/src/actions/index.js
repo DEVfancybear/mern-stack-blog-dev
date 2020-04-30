@@ -2,7 +2,7 @@ import * as types from "../constants/ActionTypes";
 import {v4 as uuidv4} from 'uuid';
 import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
-
+// =================== AUTH =================================//
 export const setAlert = (msg, alertType) => dispatch => {
     const id = uuidv4();
     dispatch({
@@ -90,5 +90,25 @@ export const logout = () => {
         dispatch({
             type: types.LOGOUT
         })
+    }
+}
+
+// =================== PROFILE ======================================= //
+// Get currents user profile
+export const getCurrentProfile = () => {
+    return async dispatch => {
+        try {
+            const res = await axios.get("/api/profile/me");
+            const data = await res.data;
+            dispatch({
+                type: types.GET_PROFILE,
+                payload: data
+            })
+        } catch (e) {
+            dispatch({
+                type: types.PROFILE_ERROR,
+                payload: {msg: e.response.statusText, status: e.response.status}
+            })
+        }
     }
 }
