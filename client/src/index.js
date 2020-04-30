@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import rootReducers from "./reducers/index";
@@ -8,17 +7,14 @@ import {createStore, applyMiddleware} from "redux";
 import thunk from "redux-thunk";
 import {composeWithDevTools} from 'redux-devtools-extension';
 import {Provider} from "react-redux";
-import {BrowserRouter} from "react-router-dom";
-import promiseMiddleware from 'redux-promise';
+// import promiseMiddleware from 'redux-promise';
 
 const store = createStore(
-    rootReducers, composeWithDevTools(applyMiddleware(promiseMiddleware, thunk))
+    rootReducers, composeWithDevTools(applyMiddleware(thunk))
 )
 ReactDOM.render(
     <Provider store={store}>
-        <BrowserRouter>
-            <App/>
-        </BrowserRouter>
+        <App/>
     </Provider>,
     document.getElementById("root")
 );

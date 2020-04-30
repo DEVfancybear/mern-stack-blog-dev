@@ -1,7 +1,8 @@
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
-
-const Login = () => {
+import {setAlert} from "../../actions/index";
+import {connect} from "react-redux";
+const Login = ({setAlert}) => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -14,11 +15,10 @@ const Login = () => {
     });
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log("succcess");
+    // setAlert("dsdfsd", "danger");
   };
   return (
     <Fragment>
-      <div className="alert alert-danger">Invalid credentials</div>
       <h1 className="large text-primary">Sign In</h1>
       <p className="lead">
         <i className="fas fa-user"></i> Sign into Your Account
@@ -52,4 +52,12 @@ const Login = () => {
   );
 };
 
-export default Login;
+const mapDispatchToProps = (dispatch, props) => {
+    return {
+        setAlert: (msg, alertType) => {
+            dispatch(setAlert(msg, alertType))
+        }
+    }
+}
+
+export default connect(mapDispatchToProps,null)(Login);
