@@ -2,6 +2,7 @@ import * as types from "../constants/ActionTypes";
 import {v4 as uuidv4} from 'uuid';
 import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
+
 export const setAlert = (msg, alertType) => dispatch => {
     const id = uuidv4();
     dispatch({
@@ -39,11 +40,11 @@ export const register = sendDataRegister => {
 }
 export const loadUser = () => {
     return async dispatch => {
-        if(localStorage.token) {
+        if (localStorage.token) {
             setAuthToken(localStorage.token)
         }
-        try{
-            const res= await axios.get('/api/auth');
+        try {
+            const res = await axios.get('/api/auth');
             const data = await res.data;
             dispatch({
                 type: types.USER_LOADED,
@@ -81,5 +82,13 @@ export const login = sendDataLogin => {
                 type: types.LOGIN_FAIL
             })
         }
+    }
+}
+//Logout and clear profile
+export const logout = () => {
+    return dispatch => {
+        dispatch({
+            type: types.LOGOUT
+        })
     }
 }
