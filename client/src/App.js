@@ -15,7 +15,7 @@ const App = ({loadUser}) => {
     useEffect(() => {
         setAuthToken(localStorage.token);
         loadUser();
-    }, []);
+    }, [loadUser]);
     return (
         <Router>
             <Fragment>
