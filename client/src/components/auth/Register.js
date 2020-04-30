@@ -1,9 +1,9 @@
 import React, {Fragment, useState} from "react";
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
-import {setAlert} from "../../actions/index";
+import {setAlert, register} from "../../actions/index";
 
-const Register = ({setAlert}) => {
+const Register = ({setAlert, register}) => {
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -21,7 +21,12 @@ const Register = ({setAlert}) => {
         if (password !== password2) {
             setAlert("Password do not math", "danger");
         } else {
-            console.log('sdsadafds');
+            const sendDataRegister = {
+                name,
+                email,
+                password
+            }
+            register(sendDataRegister);
         }
     };
     return (
@@ -86,6 +91,9 @@ const mapDispatchToProps = (dispatch, props) => {
     return {
         setAlert: (msg, alertType) => {
             dispatch(setAlert(msg, alertType))
+        },
+        register: sendDataRegister => {
+            dispatch(register(sendDataRegister))
         }
     }
 }

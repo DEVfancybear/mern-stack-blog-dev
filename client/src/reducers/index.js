@@ -1,3 +1,4 @@
 import {combineReducers} from "redux";
 import alertReducers from "./alertReducers";
-export default combineReducers({alertReducers});
+import authReducers from "./authReducers";
+export default combineReducers({alertReducers,authReducers});
