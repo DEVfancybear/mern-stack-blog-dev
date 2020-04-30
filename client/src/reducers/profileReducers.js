@@ -12,11 +12,13 @@ export default (state = initialState, action) => {
     const {type, payload} = action;
     switch (type) {
         case types.GET_PROFILE:
+        case types.UPDATE_PROFILE:
             return {
                 ...state,
                 profile: payload,
                 loading: false,
             }
+
         case types.PROFILE_ERROR:
             return {
                 ...state,
