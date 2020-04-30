@@ -13,6 +13,7 @@ import {connect} from "react-redux";
 import PrivateRoute from "./components/routing/PrivateRoute";
 import CreateProfile from "./components/profile_forms/CreateProfile";
 import EditProfile from "./components/profile_forms/EditProfile";
+import AddEducation from "./components/profile_forms/AddEducation";
 const App = ({loadUser}) => {
     useEffect(() => {
         setAuthToken(localStorage.token);
@@ -31,6 +32,7 @@ const App = ({loadUser}) => {
                         <PrivateRoute exact={true} path="/dashboard" component={Dashboard}/>
                         <PrivateRoute exact={true} path="/create-profile" component={CreateProfile}/>
                         <PrivateRoute exact={true} path="/edit-profile" component={EditProfile}/>
+                        <PrivateRoute exact={true} path="/add-education" component={AddEducation}/>
                     </Switch>
                 </section>
             </Fragment>
