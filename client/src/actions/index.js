@@ -56,3 +56,30 @@ export const loadUser = () => {
         }
     }
 }
+export const login = sendDataLogin => {
+    return async dispatch => {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        const body = JSON.stringify(sendDataLogin);
+        try {
+            const res = await axios.post("/api/auth", body, config);
+            const data = await res.data;
+            dispatch({
+                type: types.LOGIN_SUCCESS,
+                payload: data
+            })
+            dispatch(loadUser());
+        } catch (e) {
+            const errors = e.response.data.errors;
+            if (errors) {
+                errors.forEach(err => dispatch(setAlert(err.msg, 'danger')))
+            }
+            dispatch({
+                type: types.LOGIN_FAIL
+            })
+        }
+    }
+}

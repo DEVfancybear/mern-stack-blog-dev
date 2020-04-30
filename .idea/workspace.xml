@@ -20,11 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e5ff63f1-9d78-4bdf-8d32-ab790a45a52f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/utils/setAuthToken.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/actions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/actions/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/auth/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/auth/Register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/auth/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/auth/Login.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/constants/ActionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/constants/ActionTypes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/reducers/authReducers.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/reducers/authReducers.js" afterDir="false" />
     </list>
@@ -96,7 +94,7 @@
       <workItem from="1588207553219" duration="307000" />
       <workItem from="1588208329229" duration="4000" />
       <workItem from="1588210880714" duration="5835000" />
-      <workItem from="1588239881683" duration="3668000" />
+      <workItem from="1588239881683" duration="4315000" />
     </task>
     <servers />
   </component>
