@@ -4,6 +4,7 @@ import {getCurrentProfile} from "../../actions/index";
 import {Link} from "react-router-dom";
 import DashboardActions from "./DashboardActions";
 import Experience from "./Experience";
+import Education from "./Education";
 const Dashboard = ({getCurrentProfile, authReducers: {user}, profileReducers: {profile}}) => {
     useEffect(() => {
         getCurrentProfile();
@@ -18,6 +19,7 @@ const Dashboard = ({getCurrentProfile, authReducers: {user}, profileReducers: {p
                 <Fragment>
                     <DashboardActions/>
                     <Experience experience={profile.experience}/>
+                    <Education education={profile.education}/>
                     {/*<Education education={profile.education}/>*/}
 
                     {/*<div className="my-2">*/}
