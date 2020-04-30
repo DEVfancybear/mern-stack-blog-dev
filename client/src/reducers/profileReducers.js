@@ -19,6 +19,13 @@ export default (state = initialState, action) => {
                 loading: false,
             }
 
+        case types.GET_PROFILES:
+            return {
+                ...state,
+                profiles: payload,
+                loading: false
+            }
+
         case types.PROFILE_ERROR:
             return {
                 ...state,

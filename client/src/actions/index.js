@@ -116,6 +116,26 @@ export const getCurrentProfile = () => {
     }
 }
 
+//Get all profiles
+export const getAllProfiles = () => {
+    return async dispatch => {
+        dispatch({type: types.CLEAR_PROFILE});
+        try {
+            const res = await axios.get("/api/profile");
+            const data = await res.data;
+            dispatch({
+                type: types.GET_PROFILES,
+                payload: data
+            })
+        } catch (e) {
+            dispatch({
+                type: types.PROFILE_ERROR,
+                payload: {msg: e.response.statusText, status: e.response.status}
+            })
+        }
+    }
+}
+
 // Create or update profile
 export const createProfile = (
     formData,
