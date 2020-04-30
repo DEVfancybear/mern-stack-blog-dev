@@ -1,7 +1,7 @@
-import React, { Fragment, useState, useEffect } from 'react';
-import { Link, withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { createProfile, getCurrentProfile } from '../../../actions/index';
+import React, {Fragment, useState, useEffect} from 'react';
+import {Link, withRouter} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {createProfile, getCurrentProfile} from '../../../actions/index';
 
 const initialState = {
     company: '',
@@ -18,8 +18,8 @@ const initialState = {
     instagram: ''
 };
 
-const ProfileForm = ({
-                         profileReducers: { profile, loading },
+const CreateProfile = ({
+                         profileReducers: {profile, loading},
                          createProfile,
                          getCurrentProfile,
                          history
@@ -31,7 +31,7 @@ const ProfileForm = ({
     useEffect(() => {
         if (!profile) getCurrentProfile();
         if (!loading && profile) {
-            const profileData = { ...initialState };
+            const profileData = {...initialState};
             for (const key in profile) {
                 if (key in profileData) profileData[key] = profile[key];
             }
@@ -60,7 +60,7 @@ const ProfileForm = ({
     } = formData;
 
     const onChange = (e) =>
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+        setFormData({...formData, [e.target.name]: e.target.value});
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -71,7 +71,7 @@ const ProfileForm = ({
         <Fragment>
             <h1 className="large text-primary">Edit Your Profile</h1>
             <p className="lead">
-                <i className="fas fa-user" /> Add some changes to your profile
+                <i className="fas fa-user"/> Add some changes to your profile
             </p>
             <small>* = required field</small>
             <form className="form" onSubmit={onSubmit}>
@@ -176,7 +176,7 @@ const ProfileForm = ({
                 {displaySocialInputs && (
                     <Fragment>
                         <div className="form-group social-input">
-                            <i className="fab fa-twitter fa-2x" />
+                            <i className="fab fa-twitter fa-2x"/>
                             <input
                                 type="text"
                                 placeholder="Twitter URL"
@@ -187,7 +187,7 @@ const ProfileForm = ({
                         </div>
 
                         <div className="form-group social-input">
-                            <i className="fab fa-facebook fa-2x" />
+                            <i className="fab fa-facebook fa-2x"/>
                             <input
                                 type="text"
                                 placeholder="Facebook URL"
@@ -198,7 +198,7 @@ const ProfileForm = ({
                         </div>
 
                         <div className="form-group social-input">
-                            <i className="fab fa-youtube fa-2x" />
+                            <i className="fab fa-youtube fa-2x"/>
                             <input
                                 type="text"
                                 placeholder="YouTube URL"
@@ -209,7 +209,7 @@ const ProfileForm = ({
                         </div>
 
                         <div className="form-group social-input">
-                            <i className="fab fa-linkedin fa-2x" />
+                            <i className="fab fa-linkedin fa-2x"/>
                             <input
                                 type="text"
                                 placeholder="Linkedin URL"
@@ -220,7 +220,7 @@ const ProfileForm = ({
                         </div>
 
                         <div className="form-group social-input">
-                            <i className="fab fa-instagram fa-2x" />
+                            <i className="fab fa-instagram fa-2x"/>
                             <input
                                 type="text"
                                 placeholder="Instagram URL"
@@ -232,7 +232,7 @@ const ProfileForm = ({
                     </Fragment>
                 )}
 
-                <input type="submit" className="btn btn-primary my-1" />
+                <input type="submit" className="btn btn-primary my-1"/>
                 <Link className="btn btn-light my-1" to="/dashboard">
                     Go Back
                 </Link>
@@ -247,6 +247,16 @@ const mapStateToProps = (state) => {
         profileReducers: state.profileReducers
     }
 }
-export default connect(mapStateToProps, { createProfile, getCurrentProfile })(
-    withRouter(ProfileForm)
+const mapDispatchToProps = (dispatch, props) => {
+    return {
+        createProfile: (formData, history, edit) => {
+            dispatch(createProfile(formData, history, edit))
+        },
+        getCurrentProfile: () => {
+            dispatch(getCurrentProfile())
+        }
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(
+    withRouter(CreateProfile)
 );
