@@ -2,7 +2,7 @@ import React, {Fragment} from "react";
 import {connect} from "react-redux";
 import Moment from 'react-moment';
 import moment from 'moment';
-import {deleteExperience} from "../../actions/index"
+import {deleteExperience} from "../../actions/index";
 
 const Experience = ({experience, deleteExperience}) => {
     const experiences = experience.map(exp => (

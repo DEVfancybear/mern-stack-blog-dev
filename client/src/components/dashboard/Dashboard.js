@@ -5,7 +5,9 @@ import {Link} from "react-router-dom";
 import DashboardActions from "./DashboardActions";
 import Experience from "./Experience";
 import Education from "./Education";
-const Dashboard = ({getCurrentProfile, authReducers: {user}, profileReducers: {profile}}) => {
+import {deleteAccount} from "../../actions/index";
+
+const Dashboard = ({getCurrentProfile, authReducers: {user}, profileReducers: {profile}, deleteAccount}) => {
     useEffect(() => {
         getCurrentProfile();
     }, [getCurrentProfile]);
@@ -20,13 +22,12 @@ const Dashboard = ({getCurrentProfile, authReducers: {user}, profileReducers: {p
                     <DashboardActions/>
                     <Experience experience={profile.experience}/>
                     <Education education={profile.education}/>
-                    {/*<Education education={profile.education}/>*/}
 
-                    {/*<div className="my-2">*/}
-                    {/*    <button className="btn btn-danger" onClick={() => deleteAccount()}>*/}
-                    {/*        <i className="fas fa-user-minus"/> Delete My Account*/}
-                    {/*    </button>*/}
-                    {/*</div>*/}
+                    <div className="my-2">
+                        <button className="btn btn-danger" onClick={() => deleteAccount()}>
+                            <i className="fas fa-user-minus"/> Delete My Account
+                        </button>
+                    </div>
                 </Fragment>
             ) : (
                 <Fragment>
@@ -49,6 +50,9 @@ const mapDispatchToProps = (dispatch, props) => {
     return {
         getCurrentProfile: () => {
             dispatch(getCurrentProfile())
+        },
+        deleteAccount: () => {
+            dispatch(deleteAccount())
         }
     }
 }
