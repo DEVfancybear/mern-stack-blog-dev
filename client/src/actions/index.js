@@ -116,34 +116,43 @@ export const getCurrentProfile = () => {
     }
 }
 
-// Create profile
-export const createProfile = (formData, history, edit = false) => {
-    return async dispatch => {
-        try {
+// Create or update profile
+export const createProfile = (
+    formData,
+    history,
+    edit = false
+) => async dispatch => {
+    try {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
 
-            const config = {
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            }
-            const res = await axios.post("/api/profile", formData,config);
-            const data = await res.data;
-            dispatch({
-                type: types.GET_PROFILE,
-                payload: data
-            });
-            dispatch(setAlert(edit ? 'Profile Updated': 'Profile Created'));
-            if(!edit) {
-                history.push("/dashboard");
-            }
-        } catch (e) {
-            const errors = e.response.data.errors;
-            if (errors) {
-                errors.forEach(err => dispatch(setAlert(err.msg, 'danger')))
-            }
-            dispatch({
-                type: types.PROFILE_ERROR
-            })
+        const res = await axios.post('/api/profile', formData, config);
+
+        const data = await res.data
+
+        dispatch({
+            type: types.GET_PROFILE,
+            payload: data
+        });
+
+        dispatch(setAlert(edit ? 'Profile Updated' : 'Profile Created', 'success'));
+
+        if (!edit) {
+            history.push('/dashboard');
         }
+    } catch (err) {
+        const errors = err.response.data.errors;
+
+        if (errors) {
+            errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+        }
+
+        dispatch({
+            type: types.PROFILE_ERROR,
+            payload: { msg: err.response.statusText, status: err.response.status }
+        });
     }
-}
+};

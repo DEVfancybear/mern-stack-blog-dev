@@ -18,7 +18,7 @@ const initialState = {
     instagram: ''
 };
 
-const CreateProfile = ({
+const EditProfile = ({
                          profileReducers: {profile, loading},
                          createProfile,
                          getCurrentProfile,
@@ -29,20 +29,23 @@ const CreateProfile = ({
     const [displaySocialInputs, toggleSocialInputs] = useState(false);
 
     useEffect(() => {
-        if (!profile) getCurrentProfile();
-        if (!loading && profile) {
-            const profileData = {...initialState};
-            for (const key in profile) {
-                if (key in profileData) profileData[key] = profile[key];
-            }
-            for (const key in profile.social) {
-                if (key in profileData) profileData[key] = profile.social[key];
-            }
-            if (Array.isArray(profileData.skills))
-                profileData.skills = profileData.skills.join(', ');
-            setFormData(profileData);
-        }
-    }, [loading, getCurrentProfile, profile]);
+        getCurrentProfile();
+        setFormData({
+            company: loading || !profile.company ? '' : profile.company,
+            website: loading || !profile.website ? '' : profile.website,
+            location: loading || !profile.location ? '' : profile.location,
+            status: loading || !profile.status ? '' : profile.status,
+            skills: loading || !profile.skills ? '' : profile.skills.join(','),
+            githubusername: loading || !profile.githubusername ? '' : profile.githubusername,
+            bio: loading || !profile.bio ? '' : profile.bio,
+            twitter: loading || !profile.social ? '' : profile.social.twitter,
+            facebook: loading || !profile.social ? '' : profile.social.facebook,
+            linkedin: loading || !profile.linkedin ? '' : profile.social.linkedin,
+            youtube: loading || !profile.youtube ? '' : profile.social.youtube,
+            instagram: loading || !profile.instagram ? '' : profile.social.instagram
+        })
+        // eslint-disable-next-line
+    }, [loading]);
 
     const {
         company,
@@ -64,7 +67,7 @@ const CreateProfile = ({
 
     const onSubmit = (e) => {
         e.preventDefault();
-        createProfile(formData, history);
+        createProfile(formData, history, true);
     };
 
     return (
@@ -258,5 +261,5 @@ const mapDispatchToProps = (dispatch, props) => {
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(
-    withRouter(CreateProfile)
+    withRouter(EditProfile)
 );

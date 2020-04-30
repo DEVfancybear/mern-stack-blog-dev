@@ -2,6 +2,8 @@ import React, {useEffect, Fragment} from "react";
 import {connect} from "react-redux";
 import {getCurrentProfile} from "../../actions/index";
 import {Link} from "react-router-dom";
+import DashboardActions from "./DashboardActions";
+
 const Dashboard = ({getCurrentProfile, authReducers: {user}, profileReducers: {profile}}) => {
     useEffect(() => {
         getCurrentProfile();
@@ -23,7 +25,7 @@ const Dashboard = ({getCurrentProfile, authReducers: {user}, profileReducers: {p
                     {/*        <i className="fas fa-user-minus"/> Delete My Account*/}
                     {/*    </button>*/}
                     {/*</div>*/}
-                    has
+                    <DashboardActions/>
                 </Fragment>
             ) : (
                 <Fragment>

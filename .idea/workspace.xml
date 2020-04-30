@@ -20,7 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e5ff63f1-9d78-4bdf-8d32-ab790a45a52f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/client/src/components/auth/profile_forms/CreateProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/auth/profile_forms/CreateProfile.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/dashboard/DashboardActions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/profile_forms/EditProfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/actions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/actions/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/dashboard/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/dashboard/Dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/profile_forms/CreateProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/profile_forms/CreateProfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/reducers/profileReducers.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/reducers/profileReducers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api/profile.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +99,7 @@
       <workItem from="1588208329229" duration="4000" />
       <workItem from="1588210880714" duration="5835000" />
       <workItem from="1588239881683" duration="9696000" />
-      <workItem from="1588252321647" duration="628000" />
+      <workItem from="1588252321647" duration="3511000" />
     </task>
     <servers />
   </component>
