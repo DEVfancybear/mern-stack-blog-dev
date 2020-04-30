@@ -10,6 +10,7 @@ import {loadUser} from './actions/index';
 import setAuthToken from './utils/setAuthToken';
 import Dashboard from "./components/dashboard/Dashboard";
 import {connect} from "react-redux";
+import PrivateRoute from "./components/routing/PrivateRoute";
 const App = ({loadUser}) => {
     useEffect(() => {
         setAuthToken(localStorage.token);
@@ -25,7 +26,7 @@ const App = ({loadUser}) => {
                     <Switch>
                         <Route exact={true} path="/register" component={Register}/>
                         <Route exact={true} path="/login" component={Login}/>
-                        <Route exact={true} path="/dashboard" component={Dashboard}/>
+                        <PrivateRoute exact={true} path="/dashboard" component={Dashboard}/>
                     </Switch>
                 </section>
             </Fragment>
