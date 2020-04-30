@@ -11,7 +11,7 @@ import setAuthToken from './utils/setAuthToken';
 import Dashboard from "./components/dashboard/Dashboard";
 import {connect} from "react-redux";
 import PrivateRoute from "./components/routing/PrivateRoute";
-import CreateProfile from "./components/auth/profile_forms/CreateProfile";
+import CreateProfile from "./components/profile_forms/CreateProfile";
 const App = ({loadUser}) => {
     useEffect(() => {
         setAuthToken(localStorage.token);
