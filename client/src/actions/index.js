@@ -231,3 +231,43 @@ export const addEducation = (formData, history) => {
     }
 }
 
+// Delete experience
+export const deleteExperience = id => {
+    return async dispatch => {
+        try {
+            const res = await axios.delete(`/api/profile/experience/${id}`);
+            const data = await res.data;
+            dispatch({
+                type: types.UPDATE_PROFILE,
+                payload: data
+            })
+            dispatch(setAlert('Experience Removed', 'success'));
+        } catch (e) {
+            dispatch({
+                type: types.PROFILE_ERROR,
+                payload: {msg: e.response.statusText, status: e.response.status}
+            });
+        }
+    }
+}
+
+// Delete education
+export const deleteEducation = id => {
+    return async dispatch => {
+        try {
+            const res = await axios.delete(`/api/profile/education/${id}`);
+            const data = await res.data;
+            dispatch({
+                type: types.UPDATE_PROFILE,
+                payload: data
+            })
+            dispatch(setAlert('Education Removed', 'success'));
+        } catch (e) {
+            dispatch({
+                type: types.PROFILE_ERROR,
+                payload: {msg: e.response.statusText, status: e.response.status}
+            });
+        }
+    }
+}
+
