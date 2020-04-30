@@ -43,7 +43,6 @@ const Register = ({setAlert, register}) => {
                         name="name"
                         value={name}
                         onChange={onHandleChange}
-                        required
                     />
                 </div>
                 <div className="form-group">
