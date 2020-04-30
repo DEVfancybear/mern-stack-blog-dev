@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {getCurrentProfile} from "../../actions/index";
 import {Link} from "react-router-dom";
 import DashboardActions from "./DashboardActions";
-
+import Experience from "./Experience";
 const Dashboard = ({getCurrentProfile, authReducers: {user}, profileReducers: {profile}}) => {
     useEffect(() => {
         getCurrentProfile();
@@ -16,8 +16,8 @@ const Dashboard = ({getCurrentProfile, authReducers: {user}, profileReducers: {p
             </p>
             {profile !== null ? (
                 <Fragment>
-                    {/*<DashboardActions/>*/}
-                    {/*<Experience experience={profile.experience}/>*/}
+                    <DashboardActions/>
+                    <Experience experience={profile.experience}/>
                     {/*<Education education={profile.education}/>*/}
 
                     {/*<div className="my-2">*/}
@@ -25,7 +25,6 @@ const Dashboard = ({getCurrentProfile, authReducers: {user}, profileReducers: {p
                     {/*        <i className="fas fa-user-minus"/> Delete My Account*/}
                     {/*    </button>*/}
                     {/*</div>*/}
-                    <DashboardActions/>
                 </Fragment>
             ) : (
                 <Fragment>
