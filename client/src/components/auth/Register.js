@@ -1,19 +1,52 @@
-import React from "react";
-import {Link} from "react-router-dom";
+import React, { Fragment, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Register = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    password2: "",
+  });
+  const { name, email, password, password2 } = formData;
+  const onHandleChange = (e) =>
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (password !== password2) {
+      console.log("password does not match");
+    } else {
+      console.log(formData);
+    }
+  };
   return (
-    <div>
+    <Fragment>
       <h1 className="large text-primary">Sign Up</h1>
       <p className="lead">
         <i className="fas fa-user"></i> Create Your Account
       </p>
-      <form className="form" action="create-profile.html">
+      <form className="form" onSubmit={onSubmit}>
         <div className="form-group">
-          <input type="text" placeholder="Name" name="name" required />
+          <input
+            type="text"
+            placeholder="Name"
+            name="name"
+            value={name}
+            onChange={onHandleChange}
+            required
+          />
         </div>
         <div className="form-group">
-          <input type="email" placeholder="Email Address" name="email" />
+          <input
+            type="email"
+            placeholder="Email Address"
+            value={email}
+            onChange={onHandleChange}
+            name="email"
+          />
           <small className="form-text">
             This site uses Gravatar so if you want a profile image, use a
             Gravatar email
@@ -21,6 +54,8 @@ const Register = () => {
         </div>
         <div className="form-group">
           <input
+            value={password}
+            onChange={onHandleChange}
             type="password"
             placeholder="Password"
             name="password"
@@ -29,6 +64,8 @@ const Register = () => {
         </div>
         <div className="form-group">
           <input
+            value={password2}
+            onChange={onHandleChange}
             type="password"
             placeholder="Confirm Password"
             name="password2"
@@ -40,7 +77,7 @@ const Register = () => {
       <p className="my-1">
         Already have an account? <Link to="/login">Sign In</Link>
       </p>
-    </div>
+    </Fragment>
   );
 };
 
