@@ -30,6 +30,12 @@ export default (state = initialState, action) => {
                 ),
                 loading: false
             };
+        case types.DELETE_POST:
+            return {
+                ...state,
+                posts: state.posts.filter(post => post._id !== payload),
+                loading: false
+            };
         default:
             return state;
     }
