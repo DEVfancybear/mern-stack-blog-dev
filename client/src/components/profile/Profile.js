@@ -7,10 +7,12 @@ import ProfileTop from "./ProfileTop";
 import ProfileAbout from "./ProfileAbout";
 import ProfileExperience from "./ProfileExperience";
 import ProfileEducation from "./ProfileEducation";
+import ProfileGithub from "./ProfileGithub";
 
 const Profile = ({getProfileById, profileReducers: {profile, loading}, authReducers, match}) => {
     useEffect(() => {
         getProfileById(match.params.id);
+        // eslint-disable-next-line
     }, [getProfileById])
     return (
         <Fragment>
@@ -52,6 +54,10 @@ const Profile = ({getProfileById, profileReducers: {profile, loading}, authReduc
                                 <h4>No education credentials</h4>
                             )}
                         </div>
+
+                        {profile.githubusername && (
+                            <ProfileGithub username={profile.githubusername}/>
+                        )}
                     </div>
                 </Fragment>}
         </Fragment>

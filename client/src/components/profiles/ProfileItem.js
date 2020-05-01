@@ -5,7 +5,7 @@ const ProfileItem = ({profile: {user: {_id, name, avatar}, status, company, loca
     return (
         <Fragment>
             <div className="profile bg-light">
-                <img src={avatar} className="round-img"/>
+                <img src={avatar} className="round-img" alt="DEV"/>
                 <div>
                     <h2>{name}</h2>
                     <p>{status} {company && <span>at {company}</span>}</p>
