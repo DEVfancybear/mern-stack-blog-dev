@@ -170,7 +170,6 @@ export const getGithubRepos = username => async dispatch => {
 };
 
 
-
 // Create or update profile
 export const createProfile = (
     formData,
@@ -345,4 +344,24 @@ export const deleteAccount = () => {
         }
     }
 };
+
+// ========================= POSTS ========================================//
+export const getPosts = () => {
+    return async dispatch => {
+        try {
+            const res = await axios.get("/api/posts");
+            const data = await res.data;
+            dispatch({
+                type: types.GET_POSTS,
+                payload: data
+            })
+        } catch (e) {
+            dispatch({
+                type: types.POST_ERROR,
+                payload: {msg: e.response.statusText, status: e.response.status}
+            });
+        }
+
+    }
+}
 
