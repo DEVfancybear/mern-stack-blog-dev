@@ -4,20 +4,22 @@ import {connect} from 'react-redux';
 import {getPost} from '../actions/index';
 import Spinner from "../components/layout/Spinner";
 import PostItem from "../components/posts/PostItem";
+import CommentForm from "./CommentForm";
 
-const Post = ({ getPost, postReducers: { post, loading }, match }) => {
+const Post = ({getPost, postReducers: {post, loading}, match}) => {
     useEffect(() => {
         getPost(match.params.id);
     }, [getPost, match.params.id]);
 
     return loading || post === null ? (
-        <Spinner />
+        <Spinner/>
     ) : (
         <Fragment>
             <Link to="/posts" className="btn">
                 Back To Posts
             </Link>
-            <PostItem post={post} showActions={false} />
+            <PostItem post={post} showActions={false}/>
+            <CommentForm postId={post._id}/>
         </Fragment>
     );
 };
