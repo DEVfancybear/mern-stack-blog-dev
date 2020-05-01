@@ -1,9 +1,9 @@
 import React, {Fragment, useState} from "react";
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import {connect} from "react-redux";
 import {setAlert, register} from "../../actions/index";
 
-const Register = ({setAlert, register}) => {
+const Register = ({setAlert, register, authReducers: {isAuthenticated}}) => {
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -29,6 +29,10 @@ const Register = ({setAlert, register}) => {
             register(sendDataRegister);
         }
     };
+    if (isAuthenticated) {
+        return <Redirect to='/dashboard'/>;
+    }
+
     return (
         <Fragment>
             <h1 className="large text-primary">Sign Up</h1>
@@ -86,6 +90,13 @@ const Register = ({setAlert, register}) => {
         </Fragment>
     );
 };
+
+const mapStateToProps = (state) => {
+    return {
+        authReducers: state.authReducers
+    }
+}
+
 const mapDispatchToProps = (dispatch, props) => {
     return {
         setAlert: (msg, alertType) => {
@@ -97,4 +108,4 @@ const mapDispatchToProps = (dispatch, props) => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(Register);
+export default connect(mapStateToProps, mapDispatchToProps)(Register);
