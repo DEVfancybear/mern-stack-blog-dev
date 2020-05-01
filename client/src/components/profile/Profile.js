@@ -4,6 +4,7 @@ import {getProfileById} from "../../actions";
 import Spinner from "../layout/Spinner";
 import {Link} from "react-router-dom";
 import ProfileTop from "./ProfileTop";
+import ProfileAbout from "./ProfileAbout";
 
 const Profile = ({getProfileById, profileReducers: {profile, loading}, authReducers, match}) => {
     useEffect(() => {
@@ -18,6 +19,7 @@ const Profile = ({getProfileById, profileReducers: {profile, loading}, authReduc
                         <Link to="/edit-profile" className="btn btn-dark">Edit Profile</Link>)}
                     <div className="profile-grid my-1">
                         <ProfileTop profile={profile}/>
+                        <ProfileAbout profile={profile}/>
                     </div>
                 </Fragment>}
         </Fragment>
