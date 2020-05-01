@@ -1,7 +1,7 @@
 import React, {Fragment, useEffect} from 'react';
 import {connect} from 'react-redux'
 import {getPosts} from '../../actions/index';
-
+import PostItem from "./PostItem";
 const Posts = ({getPosts, postReducers: {posts}}) => {
     useEffect(() => {
         getPosts();
@@ -11,8 +11,14 @@ const Posts = ({getPosts, postReducers: {posts}}) => {
         <Fragment>
             <h1 className="large text-primary">Posts</h1>
             <p className="lead">
-                <i className="fas fa-user"/> Welcome to the community
+                <i className="fas fa-user" /> Welcome to the community
             </p>
+
+            <div className="posts">
+                {posts.map((post) => (
+                    <PostItem key={post._id} post={post} />
+                ))}
+            </div>
         </Fragment>
     );
 };
