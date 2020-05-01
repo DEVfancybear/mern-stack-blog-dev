@@ -364,4 +364,36 @@ export const getPosts = () => {
 
     }
 }
+// Add like
+export const addLike = id => async dispatch => {
+    try {
+        const res = await axios.put(`/api/posts/like/${id}`);
+        const data = await res.data
+        dispatch({
+            type: types.UPDATE_LIKES,
+            payload: {id, likes: data}
+        });
+    } catch (err) {
+        dispatch({
+            type: types.POST_ERROR,
+            payload: {msg: err.response.statusText, status: err.response.status}
+        });
+    }
+};
 
+// Remove like
+export const removeLike = id => async dispatch => {
+    try {
+        const res = await axios.put(`/api/posts/unlike/${id}`);
+        const data = await res.data;
+        dispatch({
+            type: types.UPDATE_LIKES,
+            payload: {id, likes: data}
+        });
+    } catch (err) {
+        dispatch({
+            type: types.POST_ERROR,
+            payload: {msg: err.response.statusText, status: err.response.status}
+        });
+    }
+};
