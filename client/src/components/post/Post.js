@@ -1,11 +1,11 @@
 import React, {Fragment, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {getPost} from '../actions/index';
-import Spinner from "../components/layout/Spinner";
-import PostItem from "../components/posts/PostItem";
+import {getPost} from '../../actions/index';
 import CommentForm from "./CommentForm";
 import CommentItem from "./CommentItem";
+import Spinner from "../layout/Spinner";
+import PostItem from "../posts/PostItem";
 
 const Post = ({getPost, postReducers: {post, loading}, match}) => {
     useEffect(() => {

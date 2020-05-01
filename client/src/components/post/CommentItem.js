@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import Moment from 'react-moment';
-import {deleteComment} from '../actions/index';
+import {deleteComment} from '../../actions/index';
 
 const CommentItem = ({
                          postId,

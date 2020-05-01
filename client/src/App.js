@@ -18,7 +18,8 @@ import AddExperience from "./components/profile_forms/AddExperience";
 import Profiles from "./components/profiles/Profiles";
 import Profile from "./components/profile/Profile";
 import Posts from "./components/posts/Posts";
-import Post from "./post/Post";
+import Post from "./components/post/Post";
+
 
 const App = ({loadUser}) => {
     useEffect(() => {
