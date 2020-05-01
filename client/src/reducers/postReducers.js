@@ -30,6 +30,12 @@ export default (state = initialState, action) => {
                 ),
                 loading: false
             };
+        case types.ADD_POST:
+            return {
+                ...state,
+                posts: [payload, ...state.posts],
+                loading: false
+            };
         case types.DELETE_POST:
             return {
                 ...state,
