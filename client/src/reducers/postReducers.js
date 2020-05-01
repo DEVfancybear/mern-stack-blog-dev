@@ -42,6 +42,12 @@ export default (state = initialState, action) => {
                 posts: state.posts.filter(post => post._id !== payload),
                 loading: false
             };
+        case types.GET_POST:
+            return {
+                ...state,
+                post: payload,
+                loading: false
+            };
         default:
             return state;
     }

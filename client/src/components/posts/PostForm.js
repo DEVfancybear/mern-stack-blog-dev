@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import { addPost } from '../../actions/index';
+import React, {useState} from 'react';
+import {connect} from 'react-redux';
+import {addPost} from '../../actions/index';
 
-const PostForm = ({ addPost }) => {
+const PostForm = ({addPost}) => {
     const [text, setText] = useState('');
 
     return (
@@ -14,7 +14,7 @@ const PostForm = ({ addPost }) => {
                 className='form my-1'
                 onSubmit={e => {
                     e.preventDefault();
-                    addPost({ text });
+                    addPost({text});
                     setText('');
                 }}
             >
@@ -27,7 +27,7 @@ const PostForm = ({ addPost }) => {
             onChange={e => setText(e.target.value)}
             required
         />
-                <input type='submit' className='btn btn-dark my-1' value='Submit' />
+                <input type='submit' className='btn btn-dark my-1' value='Submit'/>
             </form>
         </div>
     );
@@ -35,11 +35,10 @@ const PostForm = ({ addPost }) => {
 
 const mapDispatchToProps = (dispatch, props) => {
     return {
-
+        addPost: formData => {
+            dispatch(addPost(formData))
+        }
     }
 }
 
-export default connect(
-    null,
-    { addPost }
-)(PostForm);
+export default connect(null, mapDispatchToProps)(PostForm);
