@@ -40,9 +40,9 @@ const EditProfile = ({
             bio: loading || !profile.bio ? '' : profile.bio,
             twitter: loading || !profile.social ? '' : profile.social.twitter,
             facebook: loading || !profile.social ? '' : profile.social.facebook,
-            linkedin: loading || !profile.linkedin ? '' : profile.social.linkedin,
-            youtube: loading || !profile.youtube ? '' : profile.social.youtube,
-            instagram: loading || !profile.instagram ? '' : profile.social.instagram
+            linkedin: loading || !profile.social ? '' : profile.social.linkedin,
+            youtube: loading || !profile.social ? '' : profile.social.youtube,
+            instagram: loading || !profile.social ? '' : profile.social.instagram
         })
         // eslint-disable-next-line
     }, [loading]);
